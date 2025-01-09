@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hotel Luna{% endblock %}</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Encabezado: Barra de navegación -->
+    <header>
+        <nav class="nav-bar">
+            <ul>
+                <!-- Ruta para la página de inicio -->
+                <li><a href="{% url 'reservas:home' %}">Inicio</a></li>
+
+                <!-- Rutas para las páginas de temporada -->
+                <li><a href="{% url 'reservas:verano' %}">Temporada de Verano</a></li>
+                <li><a href="{% url 'reservas:invierno' %}">Temporada de Invierno</a></li>
+
+                <!-- Ruta para ver la disponibilidad de habitaciones -->
+                <li><a href="{% url 'reservas:disponibilidad' %}">Disponibilidad de Habitaciones</a></li>
+
+                <!-- Ruta para la sección de búsqueda laboral -->
+                <li><a href="{% url 'reservas:busqueda_laboral' %}">Búsqueda Laboral</a></li>
+
+                <!-- Ruta para acceder al blog -->
+                <li><a href="{% url 'blog:lista_blogs' %}">Blog</a></li>
+
+                <!-- Ruta para iniciar sesión -->
+                <li><a href="{% url 'usuarios:login' %}">Iniciar Sesión</a></li>
+
+                <!-- Botón adicional para reservar online -->
+                <li><a href="{% url 'reservas:reserva_online' %}">Reservar Online</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal de la página -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Hotel Luna. Todos los derechos reservados.</p>
+        <p><a href="{% url 'reservas:busqueda_laboral' %}">Búsqueda Laboral</a></p>
+        <p><a href="{% url 'reservas:listado_reservas' %}">Ver Reservas Confirmadas</a></p>
+    </footer>
+</body>
+</html>

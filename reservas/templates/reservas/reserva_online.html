@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Reserva Online
+{% endblock %}
+
+{% block content %}
+<h2>Reserva Online</h2>
+
+<!-- Formulario para realizar la reserva -->
+<form method="POST" class="reservation-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button">Confirmar Reserva</button>
+</form>
+
+<!-- Mostrar mensajes de confirmación o error -->
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<!-- Botones de navegación -->
+<div class="navigation-buttons">
+    <a href="{% url 'reservas:listado_reservas' %}" class="button">Ver Reservas Confirmadas</a>
+    <a href="{% url 'reservas:disponibilidad' %}" class="button">Ver Disponibilidad</a>
+    <a href="{% url 'reservas:home' %}" class="button">Volver a la Página Principal</a>
+</div>
+
+{% endblock %}
