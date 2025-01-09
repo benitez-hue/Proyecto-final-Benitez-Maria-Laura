@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Reserva</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <h1>Detalle de la Reserva</h1>
+
+        {% if reserva %}
+            <p><strong>ID de la reserva:</strong> {{ reserva.id }}</p>
+            <p><strong>Nombre del cliente:</strong> {{ reserva.usuario.username }}</p>
+            <p><strong>Fecha de entrada:</strong> {{ reserva.fecha_entrada }}</p>
+            <p><strong>Fecha de salida:</strong> {{ reserva.fecha_salida }}</p>
+            <p><strong>Tipo de habitación:</strong> {{ reserva.habitacion.get_tipo_display }}</p>
+            <p><strong>Estado:</strong> {{ reserva.estado }}</p>
+
+            <h3>Detalles de la habitación:</h3>
+            <p><strong>Número de habitación:</strong> {{ reserva.habitacion.numero }}</p>
+            <p><strong>Temporada:</strong> {{ reserva.habitacion.temporada }}</p>
+        {% else %}
+            <p>No se encontró la reserva.</p>
+        {% endif %}
+
+        <a href="{% url 'reservas:listado_reservas' %}" class="button">Ver Todas las Reservas</a>
+        <a href="{% url 'reservas:home' %}" class="button">Volver a la Página Principal</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Hotel Luna. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

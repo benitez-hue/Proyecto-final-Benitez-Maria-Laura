@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Hotel Luna - Temporada de Verano
+{% endblock %}
+
+{% block content %}
+<body class="verano-background">
+    <div class="container">
+        <h1>Temporada de Verano 🏖️</h1>
+        <p>Disfruta de nuestras ofertas especiales para la temporada de verano.</p>
+        <ul>
+            <li>🏖️ <strong>Descuento del 20%</strong> en reservas realizadas antes del 15 de diciembre.</li>
+            <li>🏝️ <strong>Acceso exclusivo</strong> a nuestras piscinas y áreas recreativas.</li>
+            <li>🍹 <strong>Bebidas de bienvenida</strong> para todos los huéspedes.</li>
+        </ul>
+        <a href="{% url 'reservas:home' %}" class="button">Volver a la Página Principal</a>
+    </div>
+</body>
+{% endblock %}

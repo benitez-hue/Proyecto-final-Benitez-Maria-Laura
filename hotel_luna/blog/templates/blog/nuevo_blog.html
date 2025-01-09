@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+Nuevo Blog
+{% endblock %}
+
+{% block content %}
+<h1>Crear Nuevo Blog</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button">Crear</button>
+</form>
+
+<a href="{% url 'blog:lista_blogs' %}" class="button">Volver a la Lista de Blogs</a>
+{% endblock %}

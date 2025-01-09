@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Listado de Reservas
+{% endblock %}
+
+{% block content %}
+<h1>Listado de Reservas</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Fecha de Entrada</th>
+            <th>Fecha de Salida</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reserva in reservas %}
+        <tr>
+            <td>{{ reserva.id }}</td>
+            <td>{{ reserva.usuario.username }}</td>
+            <td>{{ reserva.fecha_entrada }}</td>
+            <td>{{ reserva.fecha_salida }}</td>
+            <td>{{ reserva.estado }}</td>
+            <td>
+                <a href="{% url 'reservas:detalle_reserva' reserva.id %}">Ver Detalle</a>
+                <a href="{% url 'reservas:modificar_reserva' reserva.id %}">Modificar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'reservas:home' %}" class="button">Volver a la Página Principal</a>
+{% endblock %}

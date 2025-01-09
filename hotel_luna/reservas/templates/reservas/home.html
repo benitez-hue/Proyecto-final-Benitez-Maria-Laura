@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+Hotel Luna - Página Principal
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Bienvenido al Hotel Luna</h1>
+    <p>Haz tu reserva para la temporada de verano o invierno.</p>
+    <ul>
+        <li><a href="{% url 'reservas:verano' %}">Verano</a></li>
+        <li><a href="{% url 'reservas:invierno' %}">Invierno</a></li>
+    </ul>
+</div>
+{% endblock %}

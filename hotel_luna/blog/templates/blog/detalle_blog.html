@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ blog.titulo }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ blog.titulo }}</h1>
+
+<p><strong>Fecha de Publicación:</strong> {{ blog.fecha_publicacion }}</p>
+
+<p>{{ blog.contenido }}</p>
+
+<a href="{% url 'blog:lista_blogs' %}" class="button">Volver a la Lista de Blogs</a>
+{% endblock %}
