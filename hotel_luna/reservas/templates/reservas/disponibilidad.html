@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Disponibilidad de Habitaciones - Temporada
+{% endblock %}
+
+{% block content %}
+<h2>Disponibilidad de Habitaciones - Temporada</h2>
+
+<form method="get" action="{% url 'reservas:disponibilidad' %}">
+    <label for="temporada">Selecciona la Temporada:</label>
+    <select name="temporada" id="temporada">
+        <option value="Verano" {% if temporada == "Verano" %}selected{% endif %}>Verano</option>
+        <option value="Invierno" {% if temporada == "Invierno" %}selected{% endif %}>Invierno</option>
+    </select>
+
+    <label for="fecha_entrada">Fecha de Entrada:</label>
+    <input type="date" name="fecha_entrada" value="{{ fecha_entrada }}" required>
+
+    <label for="fecha_salida">Fecha de Salida:</label>
+    <input type="date" name="fecha_salida" value="{{ fecha_salida }}" required>
+
+    <button type="submit" class="button">Buscar Disponibilidad</button>
+</form>
+
+{% if habitaciones %}
+    <h3>Habitaciones Disponibles:</h3>
+    <ul>
+        {% for habitacion in habitaciones %}
+            <li>
+                <strong>Habitación {{ habitacion.get_tipo_display }}</strong><br>
+                Precio: {{ habitacion.precio }} USD por noche<br>
+                <a href="{% url 'reservas:reserva_online' %}" class="button">Reservar</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay habitaciones disponibles para el rango de fechas seleccionado.</p>
+{% endif %}
+
+<h3>Resumen de la Capacidad Hotelera</h3>
+<ul>
+    <li>Doble Estándar: 4 habitaciones</li>
+    <li>Doble Superior: 4 habitaciones</li>
+    <li>Single Estándar: 2 habitaciones</li>
+    <li>Single Superior: 2 habitaciones</li>
+</ul>
+
+{% endblock %}

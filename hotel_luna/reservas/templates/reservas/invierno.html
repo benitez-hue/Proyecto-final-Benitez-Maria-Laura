@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Hotel Luna - Temporada de Invierno
+{% endblock %}
+
+{% block content %}
+<body class="invierno-background">
+    <div class="container">
+        <h1>Temporada de Invierno ❄️</h1>
+        <p>Descubre nuestras promociones exclusivas para la temporada de invierno.</p>
+        <ul>
+            <li>🏔️ <strong>Paquetes de esquí</strong> con descuentos del 25%.</li>
+            <li>🔥 <strong>Cenas temáticas junto a la chimenea</strong> incluidas en la estadía.</li>
+            <li>☕ <strong>Bebidas calientes gratuitas</strong> durante toda la temporada.</li>
+        </ul>
+        <a href="{% url 'reservas:home' %}" class="button">Volver a la Página Principal</a>
+    </div>
+</body>
+{% endblock %}

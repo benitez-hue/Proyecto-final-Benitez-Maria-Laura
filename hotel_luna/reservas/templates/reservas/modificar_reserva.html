@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+Modificar Reserva
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Modificar Reserva</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button">Guardar Cambios</button>
+    </form>
+    <a href="{% url 'reservas:detalle_reserva' reserva.id %}" class="button">Cancelar</a>
+</div>
+{% endblock %}
+
